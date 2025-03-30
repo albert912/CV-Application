@@ -1,0 +1,3 @@
+1. Value that will be sent via props is dynamic as it is entered on form input.
+
+2. I need to find a function to be used with submit button.
