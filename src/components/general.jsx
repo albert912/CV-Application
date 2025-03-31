@@ -24,7 +24,7 @@ function GeneralForm(props) {
       <br />
       <br />
 
-      <button type="submit">Submit</button>
+      <button type="submit" value={props.submittedName} onChange={props.handleSubmit}>Submit</button>
     </div>
   );
 }

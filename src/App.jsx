@@ -24,7 +24,7 @@ function App() {
   const [submittedName, setSubmittedName] = useState('');
 
   const handleSubmit =  function() {
-  setSubmittedName(submittedName = name); 
+  setSubmittedName( /* idk which code to write here may be this -> */submittedName = name); 
 }; 
   
   
@@ -37,7 +37,7 @@ function App() {
 
       <main className="man">
         <div className="side">
-          <GeneralForm name={name} handleChange={handleChange} />
+          <GeneralForm name={name} handleChange={handleChange} submittedName={submittedName} handleSubmit={setSubmittedName}/>
 
           <EducationForm />
           <PracticalForm />

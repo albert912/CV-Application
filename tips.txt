@@ -1,0 +1,290 @@
+How to run react = npm run dev
+
+---
+Edit mode = users can put values into the input field
+
+Publish mode = users can't put values into the input field
+
+---
+For your React project, it's a good approach to separate the concerns of layout and logic.
+
+App.jsx should focus on the structure and logic of your application. It’s fine to define the header, main, and footer sections there, but you can break it down into separate components if it becomes too large or complex. For example, create Header.jsx, Main.jsx, and Footer.jsx components and then import them into App.jsx.
+
+App.css (or better yet, a separate CSS file for each component) should handle the styles and positioning. It's best to avoid putting too much CSS in App.css directly unless it's global styles.
+
+---
+
+Icon sites
+
+https://devicon.dev/
+
+https://materialdesignicons.com/
+
+--
+
+A React code example 
+
+1.
+
+import React from 'react'
+
+function App() {
+
+  // Header Component
+  const Header = () => (
+    <header>
+      <h1>Header Content</h1>
+    </header>
+  )
+
+  // Main Component
+  const Main = () => (
+    <main>
+      <p>Main Content</p>
+    </main>
+  )
+
+  // Footer Component
+  const Footer = () => (
+    <footer>
+      <p>Footer Content</p>
+    </footer>
+  )
+
+  return (
+    <div>
+      <Header />
+      <Main />
+      <Footer />
+    </div>
+  )
+}
+
+export default App
+
+2. function App() {
+  return (
+    <div>
+      <header>
+        <h1>Header Content</h1>
+      </header>
+
+      <main>
+        <p>Main Content</p>
+      </main>
+
+      <footer>
+        <p>Footer Content</p>
+      </footer>
+    </div>
+  )
+}
+
+---
+
+State example
+
+import React, { useState } from 'react';
+
+function MyComponent() {
+  // This is how we define state
+  const [name, setName] = useState(''); // 'name' is the state, and 'setName' is a function to change it.
+
+  const handleChange = (event) => {
+    setName(event.target.value); // Updates the state whenever input changes
+  };
+
+  return (
+    <div>
+      <input type="text" value={name} onChange={handleChange} />
+      <p>Hello, {name}!</p> {/* State 'name' is used here */}
+    </div>
+  );
+}
+
+----
+
+State example
+
+import React, { useState } from 'react';
+
+function MyComponent() {
+  // This is how we define state to keep track of the count
+  const [count, setCount] = useState(0); // 'count' is the state, and 'setCount' is the function to change it.
+
+  const handleClick = () => {
+    setCount(count + 1); // Updates the state to increase the count by 1 when the button is clicked
+  };
+
+  return (
+    <div>
+      <button onClick={handleClick}>+</button> {/* Button that triggers the count increase */}
+      <p>Count: {count}</p> {/* State 'count' is used here */}
+    </div>
+  );
+}
+
+----
+Using single state object to manage multiple inputs:
+
+import React, { useState } from "react";
+
+function MyComponent() {
+  // Define state as an object with multiple properties
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    birthdate: "",
+  });
+
+  // Handle input changes dynamically
+  const handleChange = (event) => {
+    const { name, value } = event.target; // Get input name & value
+    setFormData((prevData) => ({
+      ...prevData, // Keep old values
+      [name]: value, // Update the correct property dynamically
+    }));
+  };
+
+  return (
+    <div>
+      <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Name" />
+      <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email" />
+      <input type="date" name="birthdate" value={formData.birthdate} onChange={handleChange} />
+
+      <p>Name: {formData.name}</p>
+      <p>Email: {formData.email}</p>
+      <p>Birthdate: {formData.birthdate}</p>
+    </div>
+  );
+}
+
+export default MyComponent;
+
+
+----
+
+Props Example
+
+
+function DisplayMessage(props) {
+  return <p>The message is: {props.message}</p>; (JS expression) (child component)
+}
+
+function App() {
+  const myMessage = "Hello from the Parent Component!"; (state) (this is sent to the parent component)
+
+  return (
+    <div>
+      <h1>Passing Props Example</h1>
+      <DisplayMessage message={myMessage} /> (props expression) (parent component)
+    </div>
+  );
+}
+
+export default App;
+
+
+---
+
+Current Step
+
+- Find out how to use Props to send the value of the input to the display (DONE!)
+
+- Study Event handling  (Create a function for the submit button, use prevent default inside in it and use it inside onClick property of the submit button).
+
+- Search State Updates.
+
+--
+
+TIPS!!
+
+Sure! I'll break it down as simply as possible for you:
+
+Situation:
+Component 1 (Form): This component has form inputs and a submit button.
+
+Component 2 (Display): This component will show the values from the form inputs after the submit button is clicked.
+
+The Core Concept (Props in Action):
+State: In React, state stores information that can change. So, the values from the form inputs need to be stored in state.
+
+Parent Component: You have a parent component (it could be the component that wraps both the form and the display). This parent will hold the state (the values from the form).
+
+Passing Data with Props:
+
+The parent component will pass the state as props to both child components (form and display).
+
+Props are like values or data that a parent component sends to its child components.
+
+What happens when you click "submit"?
+
+When the submit button is clicked in Component 1 (the form), the parent component’s state will get updated with the values from the form.
+
+Component 2 (the display) will receive this updated state as props from the parent, and it will automatically update to show the new values.
+
+Step-by-Step:
+Step 1: The parent component stores the state (form input values) in its own state.
+
+Step 2: The parent component sends the state (the form values) to both the form component and the display component using props.
+
+Step 3: When you click the submit button in the form, the parent component’s state is updated with the input values from the form.
+
+Step 4: The display component automatically gets the updated state (via props) and shows the new form values.
+
+Why is this important?
+React works based on a one-way data flow. Data goes down from parent to child via props, and any update to the state in the parent causes child components to re-render with the new data.
+
+Does this make sense now?
+
+----
+
+SECOND TIP
+
+Sure! Here's a simple recap of what you need to do:
+
+Create two state variables:
+
+One state for tracking the input value (name).
+
+Another state for storing the submitted value (submittedName).
+
+Handle input change:
+
+Use the name state to track the input as the user types.
+
+Update the name state inside the onChange handler for the input field.
+
+Handle form submission:
+
+Create a function (e.g., handleSubmit) to handle the submit event.
+
+Inside this function, update the submittedName state with the current value of name. (!! Crucial)
+
+Update the display:
+
+Pass the submittedName state to the second component as a prop.
+
+In the second component, use the submittedName prop to display the submitted value.
+
+Prevent immediate display:
+
+Don't display the value from name on the second component directly (while typing).
+
+Only display the value when the form is submitted by using submittedName instead.
+
+By following these steps, the value will only show up in the display div after clicking the submit button, not while typing.
+
+--> IN SHORT - use the second function state as prop for the second component.
+
+
+
+
+
+
+
+
+
+
+
+

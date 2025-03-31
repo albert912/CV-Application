@@ -11,7 +11,7 @@ function GeneralDisp(props) {
         <h1>General Details</h1>
 
 
-        <p>Name: {props.name} </p>
+        <p>Name: {props.submittedName} </p>
     
 
         </div>
