@@ -1,0 +1,23 @@
+(This is not a question). Well, I noticed that you didn't use the code related to submittedName or handleSubmit inside the first component, but you used it as props inside GeneralDisp component element inside the App.jsx, soo it looks like, this is how we use it.
+
+Can you explain how handleSubmit function expression update the submittedName state with the current value of the form input? I also like to know why did we used event and name as the parameters for this function.
+
+Why do we use handleChange as the property name inside the GeneralForm component element? Isn't this related to the first state function? Why didn't we use name={name} inside these component element?
+
+Why do we use name as the property name inside the GeneralDisp? Isn't related to the first state? Why didn't we use  handleSubmit there also?
+
+Why don't we use any props inside the buttom element (inside general.jsx)?
+
+Don't we need to declare the first state and first function inside the App.jsx because (of course idk whether we are using them as props here) props rules demand it?
+
+Why do we need this code inside form element
+
+onSubmit={(event)=>props.handleChange(event, name)}  
+
+What is its function? 
+
+Do we use {props.submittedName}  as JS expression inside the p element in generaldiv.jsx (second component}
+
+I am sorry if I  asked too much (and if they seems dumb ones) because I noticed that there are lots of changes between my old code and the new version you provided. 
+
+I have one final question. You know, two days ago I was using an object and a single state in the hook because I needed to create multiple inputs but as I decided to understand how to use props to generate values on the div on the right side after we click the submit button first and then apply the code on the multiple form inputs, so I switched using one form input temporarily. How would my code change if I need to write Email, Phone Number and City and Province form inputs also? 

@@ -3,10 +3,7 @@ import GeneralDisp from './generaldiv';
 import '../styles/general.css';
 
 function GeneralForm(props) {
-  const [name, setName] = useState('');
-  const handleChange = function(event) {
-    setName(event.target.value);
-  };
+ 
 
 
 
@@ -21,7 +18,8 @@ function GeneralForm(props) {
         type="text" 
         id="name" 
         name="name" 
-        onChange={handleChange}
+        value={props.name} 
+        onChange={props.handleChange} 
         maxLength={20}
       />
       <br />

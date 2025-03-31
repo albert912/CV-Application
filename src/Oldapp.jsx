@@ -13,20 +13,19 @@ import PracticalDisp from './components/pracdiv';
 
 function App() {
   
-  // const [name, setName] = useState('');
+  const [name, setName] = useState('');
 
-  // const handleChange = function(event) {
-  //   setName(event.target.value);
-  // };
+  const handleChange = function(event) {
+    setName(event.target.value);
+  };
 
 
 
   const [submittedName, setSubmittedName] = useState('');
 
-  const handleSubmit =  function(event,name) {
-    event.preventDefault();
+  const handleSubmit =  function() {
 
-  setSubmittedName(name); 
+  setSubmittedName( /* idk which code to write here may be this -> */submittedName = name); 
 }; 
   
   
@@ -39,22 +38,22 @@ function App() {
 
       <main className="man">
         <div className="side">
-          <GeneralForm  handleChange={handleSubmit} />
+          <GeneralForm name={name} handleChange={handleChange} submittedName={submittedName} handleSubmit={setSubmittedName}/>
 
-          {/* <EducationForm />
-          <PracticalForm /> */}
+          <EducationForm />
+          <PracticalForm />
         </div>
 
         <div className="display">
-          <GeneralDisp name={submittedName} />
-          {/* <EducationDisp /> */}
-          {/* <PracticalDisp /> */}
+          <GeneralDisp name={name} />
+          <EducationDisp />
+          <PracticalDisp />
         </div>
       </main>
-{/* 
+
       <footer className="ftr">
         <p className="sign">@albert</p>
-      </footer> */}
+      </footer>
     </div>
   );
 }
