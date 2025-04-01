@@ -23,10 +23,10 @@ function App() {
 
   const [submittedName, setSubmittedName] = useState('');
 
-  const handleSubmit =  function(event,name) {
+  const handleSubmit =  function(event, formData) {
     event.preventDefault();
 
-  setSubmittedName(name); 
+  setSubmittedName(formData.name, formData.email, formData.phone, formData.city); 
 }; 
   
   
@@ -46,7 +46,7 @@ function App() {
         </div>
 
         <div className="display">
-          <GeneralDisp name={submittedName} />
+          <GeneralDisp formData={submittedName} />
           {/* <EducationDisp /> */}
           {/* <PracticalDisp /> */}
         </div>

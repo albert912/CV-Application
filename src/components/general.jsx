@@ -5,25 +5,25 @@ import '../styles/general.css';
 function GeneralForm(props) {
 
 //Hook
-  const [name, setName] = useState('');
+ // const [name, setName] = useState('');
 
   //Second Hook for multiple form inputs;
 
- // const [formData, setFormData] = useState({ name: '', email: '', phone: '', city:'', });
+  const [formData, setFormData] = useState({ name: '', email: '', phone: '', city:'', });
 
 
 
 
   //Update Function
   const handleChange = function(event) {
-    setName(event.target.value);
+    setFormData(event.target.value);
   };
 
 
 
   return (
     <div className='general'>
-      <form onSubmit={(event)=>props.handleChange(event, name)} >
+      <form onSubmit={(event)=>props.handleChange(event, formData.name, formData.email, formData.phone, formData.city)} >
       <p>General Details</p>
 
       <label htmlFor="name">Full Name:</label>

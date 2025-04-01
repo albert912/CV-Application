@@ -11,13 +11,13 @@ function GeneralDisp(props) {
         <h1>General Details</h1>
 
 
-        <p>Full Name: {props.name} </p>
+        <p>Full Name: {props.formData.name} </p>
 
-       {/* <p>Email: {props.formData} </p>
+        <p>Email: {props.formData.email} </p>
 
-        <p>Phone Number: {props.formData} </p>
+        <p>Phone Number: {props.formData.phone} </p>
 
-        <p>City: {props.formData} </p> */}
+        <p>City: {props.formData.city} </p> 
     
 
         </div>
