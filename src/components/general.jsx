@@ -16,14 +16,18 @@ function GeneralForm(props) {
 
   //Update Function
   const handleChange = function(event) {
-    setFormData(event.target.value);
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value  
+    });
   };
+  
 
-
+//event.target.value
 
   return (
     <div className='general'>
-      <form onSubmit={(event)=>props.handleChange(event, formData.name, formData.email, formData.phone, formData.city)} >
+      <form onSubmit={(event) => props.handleChange(event, formData)}>
       <p>General Details</p>
 
       <label htmlFor="name">Full Name:</label>

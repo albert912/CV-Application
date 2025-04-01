@@ -21,13 +21,27 @@ function App() {
 
 
 
-  const [submittedName, setSubmittedName] = useState('');
+  const [generalData, setGeneralData] = useState({});
 
-  const handleSubmit =  function(event, formData) {
+  const [educationData, setEducationData] = useState({});
+
+  const [practicalData, setPracticalData] = useState({});
+  
+  const handleGeneralSubmit = (event, formData) => {
     event.preventDefault();
-
-  setSubmittedName(formData.name, formData.email, formData.phone, formData.city); 
-}; 
+    setGeneralData(formData);
+  };
+  
+  const handleEducationSubmit = (event, formData) => {
+    event.preventDefault();
+    setEducationData(formData);
+  };
+  
+  const handlePracticalSubmit = (event, formData) => {
+    event.preventDefault();
+    setPracticalData(formData);
+  };
+  
   
   
  
@@ -39,22 +53,23 @@ function App() {
 
       <main className="man">
         <div className="side">
-          <GeneralForm  handleChange={handleSubmit} />
+          <GeneralForm  handleChange={handleGeneralSubmit} />
 
-          {/* <EducationForm />
-          <PracticalForm /> */}
+           <EducationForm handleChange={handleEducationSubmit} />
+
+          <PracticalForm handleChange={handlePracticalSubmit} /> 
         </div>
 
         <div className="display">
-          <GeneralDisp formData={submittedName} />
-          {/* <EducationDisp /> */}
-          {/* <PracticalDisp /> */}
+          <GeneralDisp formData={generalData} />
+           <EducationDisp formData={educationData} /> 
+           <PracticalDisp formData={practicalData}/> 
         </div>
       </main>
-{/* 
+
       <footer className="ftr">
         <p className="sign">@albert</p>
-      </footer> */}
+      </footer> 
     </div>
   );
 }
